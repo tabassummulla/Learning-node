@@ -47,6 +47,7 @@ const User = db.define('users', {
      },
       updatedAt: {
            type: Sequelize.DATE,
+           // DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP - how it works on my sql TODO: find how it works here 
           default: Sequelize.fn('NOW')
      }
 
