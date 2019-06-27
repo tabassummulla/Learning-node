@@ -13,9 +13,9 @@ route.get('/', (req, res) => {
 
           }).catch((err) => {
 
-                    console.log(err);
+                    console.log('@ Get User Request', err);
 
-                    res.send(500).send("Error!");
+                    res.send(500).send("Error please check logs");
 
 
 
@@ -50,6 +50,8 @@ route.post('/createUser', (req, res) => {
 
                     else {
 
+                        console.log('@ Post Create User', err);
+
                               res.sendstatus(500).send('Failed to register');
                     }
 
@@ -77,14 +79,14 @@ route.post('/delete', (req, res) => {
 
             else{
 
-            res.status(200).send('account deleted');
+            res.status(200).send('Account successfuly deleted');
             }
 
 
         }).catch((err) =>  {
         
-            console.log(err);
-            res.status(500).send('error');
+            console.log('@ Post Delete User Request', err);
+            res.status(500).send('Error please check logs');
 
             });
 
