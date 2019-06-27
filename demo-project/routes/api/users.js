@@ -13,7 +13,7 @@ route.get('/', (req, res) => {
 
                     console.log(err);
 
-                    res.send(500).send("Error : epic fail");
+                    res.send(500).send("Error!");
 
 
 
@@ -38,7 +38,7 @@ route.post('/add', (req, res) => {
 
           }).then((users => {
 
-                    res.status(200).send('Success');
+                    res.status(200).send('Account created successfuly');
 
           })).catch((err => {
 
@@ -79,7 +79,7 @@ route.post('/delete', (req, res) => {
 
           
           console.log(err);
-          res.status(500).send('could not delete account');
+          res.status(500).send('Could not delete account');
 
           }));
 
