@@ -13,10 +13,7 @@ route.get('/', (req, res) => {
 
                     console.log(err);
 
-                    res.send(500).send({
-                              error: "failed to get response"
-
-                    });
+                    res.send(500).send("Error : epic fail");
 
 
 
