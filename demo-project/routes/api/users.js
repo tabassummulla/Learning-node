@@ -1,6 +1,8 @@
 
 const User = require('../../db').User;
 const route = require('express').Router();
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 route.get('/', (req, res) => {
 
@@ -24,10 +26,7 @@ route.get('/', (req, res) => {
 
 
 
-
-
-
-route.post('/add', (req, res) => {
+route.post('/createUser', (req, res) => {
 
           User.create({
 
@@ -66,22 +65,46 @@ route.post('/delete', (req, res) => {
 
           User.destroy({
                     where: {
-                    email_add: req.body.email_add,
-                    password: req.body.password
-
+                        [Op.and]: [{email_add: req.body.email_add}, {password: req.body.password}]
                     }
-          }).then((user => {
+          }).then((found) => {
 
-          res.status(200).send('Account successfuly deleted');
+            if(found == 0) {
 
 
-          })).catch((err => {
+                res.status(500).send('error');
+
+            }
+            else{
+
+            res.status(200).send('account deleted');
+            }
+
+
+        }).catch((err) =>  {
+        
+            
+            res.status(500).send('error');
+
+            });
+          
+          
+          
+        //   then((user => {
+
+
+
+
+        //   res.status(200).send('Account successfuly deleted');
+
+
+        //   })).catch((err => {
 
           
-          console.log(err);
-          res.status(500).send('Could not delete account');
+        //   console.log(err);
+        //   res.status(500).send('Could not delete account');
 
-          }));
+        //   }));
 
 });
 
