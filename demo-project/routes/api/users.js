@@ -71,10 +71,10 @@ route.post('/delete', (req, res) => {
 
             if(found == 0) {
 
-
-                res.status(500).send('error');
+            res.status(500).send('Incorrect user details');
 
             }
+
             else{
 
             res.status(200).send('account deleted');
@@ -83,28 +83,11 @@ route.post('/delete', (req, res) => {
 
         }).catch((err) =>  {
         
-            
+            console.log(err);
             res.status(500).send('error');
 
             });
-          
-          
-          
-        //   then((user => {
 
-
-
-
-        //   res.status(200).send('Account successfuly deleted');
-
-
-        //   })).catch((err => {
-
-          
-        //   console.log(err);
-        //   res.status(500).send('Could not delete account');
-
-        //   }));
 
 });
 
