@@ -15,7 +15,7 @@ route.get('/', (req, res) => {
 
                     console.log('@ Get User Request', err);
 
-                    res.send(500).send("Error please check logs");
+                    res.send(500).send(err.message);
 
 
 
@@ -26,8 +26,20 @@ route.get('/', (req, res) => {
 
 
 
-route.post('/createUser', (req, res) => {
 
+
+
+
+
+
+
+
+
+
+
+route.post('/register', (req, res) => {
+
+    //TODO add validation to check if fields are empty 
           User.create({
 
                     first_name: req.body.first_name,
@@ -35,7 +47,8 @@ route.post('/createUser', (req, res) => {
                     password: req.body.password,
                     email_add: req.body.email_add,
 
-          }).then((users => {
+                
+          }).then((user => {
 
                     res.status(200).send('Account created successfuly');
 
@@ -48,11 +61,22 @@ route.post('/createUser', (req, res) => {
 
                     }
 
+                    if(err.name === 'SequelizeValidationError') {
+
+                        res.status(500).send({error : {
+                            message : err.errors[0].message
+                        }});
+
+
+
+
+                    }
+
                     else {
 
                         console.log('@ Post Create User', err);
 
-                              res.sendstatus(500).send('Failed to register');
+                              res.status(500).send('Failed to register');
                     }
 
           }));
@@ -60,6 +84,24 @@ route.post('/createUser', (req, res) => {
 
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
