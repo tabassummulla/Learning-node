@@ -5,47 +5,48 @@ const bcrypt = require("bcryptjs");
 
 route.post('/', (req, res) => {
 
-          User.findOne({
-                  where : {
-                      email_add : req.body.email_add
-                  }
-              }).then((user) => {
+    User.findOne({
+        where: {
+            email_add: req.body.email_add
+        }
+    }).then((user) => {
 
-      
-                  if(!user){
-                      
-                    res.redirect('/');
+        if (!user) {
 
-                  }
-                  else{
+            res.status(404).json({ message: 'User does not exist, please register' });
+            res.redirect('/');
 
-                    bcrypt.compare(req.body.password, user.password, (err,valid) =>{
+        }
+        else {
 
-                        if(valid==true){
-                            
-                            res.status(200).json({user, message: 'Login success'});
-                            
-                        }
+            bcrypt.compare(req.body.password, user.password, (err, valid) => {
 
-                        else{
+                if (valid == true) {
 
-                            res.status(401).json({message: 'Incorrect username and/or password'});
+                    res.status(200).json({ user, message: 'Login success' });
 
-                            console.log(err);
+                }
 
-                        }
+                else {
 
-                    });
-      
-              
-                  }}).catch((err) => {
-      
-                    res.status(401).json({err, message: 'Failed to login'});
-      
-          });
-      
-      }); 
+                    res.status(401).json({ message: 'Incorrect username and/or password' });
+
+                    console.log(err);
+
+                }
+
+            });
 
 
+        }
+    }).catch((err) => {
 
-      exports = module.exports = route;
+        res.status(401).json({ err, message: 'Failed to login' });
+
+    });
+
+});
+
+
+
+exports = module.exports = route;
