@@ -6,8 +6,6 @@ route.use('/login', require('./login'));
 route.use('/register', require('./register'));
 
 
-
-
 exports = module.exports = {
           route
 }
