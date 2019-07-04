@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const config = require('./config');
-
+const bcrypt = require("bcryptjs");
 
 
 const db = new Sequelize(config.db_name, config.db_user, config.db_password, {
@@ -35,7 +35,7 @@ const User = db.define('users', {
      password: {
 
           //TODO: use bcrypt to encrypt data 
-          type: Sequelize.STRING(20),
+          type: Sequelize.STRING,
           allowNull: false,
 
      },
@@ -68,9 +68,13 @@ const User = db.define('users', {
 
 });
 
+User.prototype.validPassword = function(password) {
+     return bcrypt.compareSync(password, this.password);
+   };
 
 
-db.sync().then(
+
+   db.sync().then(
      () => console.log("*****Database created and synced")
 ).catch((err) => console.log(err));
 
