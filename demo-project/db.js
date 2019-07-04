@@ -1,9 +1,12 @@
 const Sequelize = require('sequelize');
+const config = require('./config');
 
-const db = new Sequelize('develop', 'root', 'password', {
 
-     host: 'localhost',
-     dialect: 'mysql',
+
+const db = new Sequelize(config.db_name, config.db_user, config.db_password, {
+
+     host: config.db_host,
+     dialect: config.db_dialect,
      define: {
           charset: 'utf8mb4',
           collate: 'utf8mb4_unicode_ci',
@@ -39,7 +42,18 @@ const User = db.define('users', {
      email_add: {
           type: Sequelize.STRING,
           allowNull: false,
+          validate: {
+               isEmail: true
+          },
           primaryKey: true
+     },
+
+     last_login: {
+          type: Sequelize.DATE
+     },
+     status: {
+          type: Sequelize.ENUM('active', 'inactive'),
+          defaultValue: 'active'
      },
      // Timestamps
      createdAt: {
@@ -53,8 +67,6 @@ const User = db.define('users', {
      }
 
 });
-
-
 
 
 
