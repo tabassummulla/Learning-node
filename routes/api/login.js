@@ -22,7 +22,7 @@ route.post('/', (req, res) => {
 
                 if (valid == true) {
 
-                    res.status(200).json({ user, message: 'Login success' });
+                    res.status(200).json({message: 'Login success' });
             
                 }
 

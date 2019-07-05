@@ -18,11 +18,12 @@ function login() {
           request.onload = function () {
 
                     if (request.status === 200) {
-                                        alert('success');
+                                        alert(JSON.stringify(request.response));
+                              //TODO need to redirect on success of login to different html page 
                               }
                               else if (request.status == 401) {
 
-                                        alert('unauthorised');
+                                        alert(JSON.stringify(request.response));
 
                               }
                     
