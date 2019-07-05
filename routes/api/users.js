@@ -28,6 +28,25 @@ route.get('/', (req, res) => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 route.post('/delete', (req, res) => {
 
           User.destroy({

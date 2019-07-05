@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 // app.use(express.json());   
 // app.use(express.urlencoded({ extended: true }));
 
-app.use('/home', express.static(path.join(__dirname, './front-end')));
+app.use('/', express.static(path.join(__dirname, './front-end')));
 
 
 app.use('/api', require('./routes/api').route);

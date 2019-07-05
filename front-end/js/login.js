@@ -21,7 +21,7 @@ function login() {
                                         alert(JSON.stringify(request.response));
                               //TODO need to redirect on success of login to different html page 
                               }
-                              else if (request.status == 401) {
+                              else if (request.status == 401 || request.status == 404 ) {
 
                                         alert(JSON.stringify(request.response));
 

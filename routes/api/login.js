@@ -1,7 +1,10 @@
 
 const User = require('../../database/db').User;
 const route = require('express').Router();
+
 const bcrypt = require("bcryptjs");
+
+
 
 
 route.post('/', (req, res) => {
