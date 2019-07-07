@@ -1,12 +1,42 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
+ 
+<head>
+    <title>Login</title>
+
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <link rel="stylesheet" type="text/css" href="./css/style.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="./js/login.js"></script>
+</head>
+ 
+<body class="text-center" cz-shortcut-listen="true">
+
+    <div class="login">
+
+            <div id="signinHeader">
+                    <div id="signinOverlay">
+                            <h1 id="signIn"> Login in to Tabs's World </h1>
+                            </div>
+
+        <!-- <div id="loginTitle"><span id="loginT" class="_50f6">Login in to Tabs's World</span></div> -->
+       <br>
+        <input  name='email_add' type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus="">
+    <br>
+        
+        <input   name='password' type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <br>
+        <p id="err"> </p>
+        <button class="loginBtn" type="button" onclick='validateFields()' id='signin'>Login</button>
+
+        <div class="seperator-reg"><span class="reg-sep"> or </span></div>
+
+        <button class="registerBtn" type="button" id='register'>Create Account</button>
+
+    </div>
 
 
-          <head>
-                    <title>Home</title>
-                    <h1>test</h1>
-          </head>
-          <body>
-
-          </body>
+ 
+</body>
+ 
 </html>

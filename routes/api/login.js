@@ -31,7 +31,7 @@ route.post('/', (req, res) => {
 
                 else {
 
-                    res.status(401).json({ message: 'Incorrect username and/or password' });
+                    res.status(401).json({ message: 'Incorrect password' });
 
                     console.log(err);
 

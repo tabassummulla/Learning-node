@@ -30,11 +30,10 @@ route.post('/', (req, res) => {
                 }).then((user => {
       
                           res.status(200).json({user, message:'Account created successfuly'});
-                          res.redirect(307, "/login");
       
                 })).catch((err => {
       
-      
+
                           if (err.name === 'SequelizeUniqueConstraintError' && err.parent.code === 'ER_DUP_ENTRY') {
       
                               res.status(409).json({message: 'An Account with this email is already registered'});
