@@ -16,7 +16,7 @@ route.post('/', (req, res) => {
 
         if (!user) {
             
-            res.status(404).json({ message: 'User does not exist, please register' });
+            res.status(404).json({ error: 'User does not exist, please register' });
 
 
         }
@@ -25,13 +25,13 @@ route.post('/', (req, res) => {
 
                 if (valid == true) {
 
-                    res.status(200).json({message: 'Login success' });
+                    res.status(200).json({message: 'Login successful' });
             
                 }
 
                 else {
 
-                    res.status(401).json({ message: 'Incorrect password' });
+                    res.status(401).json({ error: 'Incorrect password' });
 
                     console.log(err);
 
@@ -44,7 +44,7 @@ route.post('/', (req, res) => {
     }).catch((err) => {
 
         console.log(err);
-        res.status(401).json({ message: 'Failed to login' });
+        res.status(401).json({ error: 'Failed to login' });
 
     });
 

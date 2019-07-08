@@ -16,6 +16,50 @@ User.beforeCreate(user=> {
 
 
 
+
+
+
+
+
+
+//if email exists 
+route.post('/exists', (req,res)=>{
+
+User.findOne({
+
+    where: {
+        email_add :req.body.email_add
+    }
+
+}).then((user) =>{
+
+if(!user){
+
+res.status(200).json({message: 'Email is available'});
+}
+else{
+
+    res.status(409).json({error: 'Email is already registered'});
+}
+
+}).catch((err) =>{
+
+    res.status(500).json(err);
+
+
+});
+
+
+});
+
+
+
+
+
+
+
+
+
 route.post('/', (req, res) => {
       
           //TODO add validation to check if fields are empty 

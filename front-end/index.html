@@ -16,22 +16,24 @@
 
             <div id="signinHeader">
                     <div id="signinOverlay">
-                            <h1 id="signIn"> Login in to Tabs's World </h1>
-                            </div>
+                            <h1 id="signIn"> Login</h1>
+                    </div>
+                    <div id="errMsg" class="alert alert-danger" role="alert" style="visibility:hidden"><p id="loginErr"></p>
+                    </div>
 
-        <!-- <div id="loginTitle"><span id="loginT" class="_50f6">Login in to Tabs's World</span></div> -->
-       <br>
-        <input  name='email_add' type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus="">
-    <br>
-        
-        <input   name='password' type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input  name='email_add' type="email" id="inputEmail" class='inputEmail' placeholder="Email address" required autofocus="">
         <br>
-        <p id="err"> </p>
+        
+        <input   name='password' type="password" class='inputPassword' id="inputPassword" placeholder="Password" required>
+
+        <br> 
+
+        <p id="err"> </p> 
         <button class="loginBtn" type="button" onclick='validateFields()' id='signin'>Login</button>
 
         <div class="seperator-reg"><span class="reg-sep"> or </span></div>
 
-        <button class="registerBtn" type="button" id='register'>Create Account</button>
+        <button class="registerBtn" type="button" id='register' onclick="window.location.href='http://localhost:3000/register.html'">Create Account</button>
 
     </div>
 
