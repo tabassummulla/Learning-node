@@ -73,7 +73,7 @@ route.post('/', (req, res) => {
                       
                 }).then((user => {
       
-                          res.status(200).json({user, message:'Account created successfuly'});
+                          res.status(200).json({message:'Account created successfuly'});
       
                 })).catch((err => {
       
@@ -93,7 +93,7 @@ route.post('/', (req, res) => {
       
                               console.log('@ Post Create User', err);
       
-                              res.status(500).json({err, message:'Failed to register'});
+                              res.status(500).json({message:'Failed to register'});
                           }
       
                 }));
