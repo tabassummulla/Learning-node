@@ -3,31 +3,33 @@
 $(document).ready(function () {
 
   var timer = null;
+
+
   $('#inputEmail-Reg').keydown(function () {
     clearTimeout(timer);
     timer = setTimeout(validateEmail, 1000);
 
   });
 
-  $('html').keyup(function(e){
-    if(e.keyCode == 8 ) {
 
+  document.addEventListener('keyup', (event) => {
+
+    if(event.keyCode == 8) {
+      
       let errAlert = document.getElementById('errRegMsg');
       let signUpErr = document.getElementById('signUpErr');
 
       errAlert.visibility ="hidden";
       signUpErr.innerHTML = "";
     }
-});
+
+  });
 
   $('#inputPassword-RegConfirm').keydown(function () {
     clearTimeout(timer);
     timer = setTimeout(checkPasswordMatch, 1000);
 
   });
-
-
-
 
 });
 
@@ -155,6 +157,7 @@ function emailExists(email) {
 
     errAlert.style.visibility = "visible";
 
+    let resp = JSON.parse(request.response);
     if (request.status === 409) {
 
       signUpErr.innerHTML = "Email is already registered  " + "<a href='http://localhost:3000/index.html'> Login Now </a>";
@@ -164,8 +167,7 @@ function emailExists(email) {
 
       errAlert.className = "alert alert-success";
       signUpErr.style.color = "green";
-      signUpErr.innerHTML = request.response;
-
+      signUpErr.innerHTML = resp['message'];
     }
 
 
@@ -199,20 +201,18 @@ function signUp(email, firstName, lastName, password) {
 
     errAlert.style.visibility = "visible";
 
+    let resp = JSON.parse(request.response);
+    signUpErr.innerHTML = resp['message'];
+
     if (request.status === 200) {
 
       errAlert.className = "alert alert-success";
       signUpErr.style.color = "green";
-      signUpErr.innerHTML = request.response;
+      
+
 
     }
-    else {
-
-      signUpErr.innerHTML = request.response;
-    }
-
-
-
+    
   };
 
   request.send(JSON.stringify(body));
