@@ -1,44 +1,31 @@
 <!DOCTYPE html>
 <html>
  
-<head>
-    <title>Login</title>
+    <head>
+        <title>Home</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-   <link rel="stylesheet" type="text/css" href="./css/style.css">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-   <script src="./js/login.js"></script>
+
+        <script>    $(function () {
+                            $('#header').load("header.html");
+                            $('#footer').load("footer.html");
+
+   
+                  });
+
+        </script>
+
+        <div id='header'></div>
 </head>
- 
+</div>
 <body class="text-center" cz-shortcut-listen="true">
+        <div class=”main-container”>
 
-    <div class="login">
-
-            <div id="signinHeader">
-                    <div id="signinOverlay">
-                            <h1 id="signIn"> Login</h1>
-                    </div>
-                    <div id="errMsg" class="alert alert-danger" role="alert" style="visibility:hidden"><p id="loginErr"></p>
-                    </div>
-
-        <input  name='email_add' type="email" id="inputEmail" class='inputEmail' placeholder="Email address" required autofocus="">
-        <br>
-        
-        <input   name='password' type="password" class='inputPassword' id="inputPassword" placeholder="Password" required>
-
-        <br> 
-
-        <p id="err"> </p> 
-        <button class="loginBtn" type="button" onclick='validateFields()' id='signin'>Login</button>
-
-        <div class="seperator-reg"><span class="reg-sep"> or </span></div>
-
-        <button class="registerBtn" type="button" id='register' onclick="window.location.href='http://localhost:3000/register.html'">Create Account</button>
-
-    </div>
+        </div>
+        <div id='footer'></div>
+</div>
 
 
- 
 </body>
- 
+
 </html>
