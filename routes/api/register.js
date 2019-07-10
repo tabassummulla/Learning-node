@@ -86,7 +86,7 @@ route.post('/', (req, res) => {
       
                           if(err.name === 'SequelizeValidationError') {
       
-                              res.status(400).json({error : { message : err.errors[0].message}});
+                              res.status(400).json({message : { message : err.errors[0].message}});
                           }
       
                           else {
