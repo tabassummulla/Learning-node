@@ -1,7 +1,4 @@
 
-
-
-
 function validateFields(){
 
     document.getElementById('loginErr').innerHTML = "";
@@ -52,9 +49,6 @@ function validateFields(){
 
 
 
-
-
-
 function login(email,password) {
           let request = new XMLHttpRequest();
           let url = '/api/login';
@@ -69,16 +63,20 @@ function login(email,password) {
 
           request.onload = function () {
 
-                let msg = request.response;
-                
+         let resp = JSON.parse(request.response);
+
                 document.getElementById('errMsg').style.visibility="visible";
-                document.getElementById('loginErr').innerHTML = msg;
+                 document.getElementById('loginErr').innerHTML = resp['message'];
 
                     if (request.status === 200) {
 
                         document.getElementById('errMsg').className="alert alert-success";
                         document.getElementById('loginErr').style.color = "green";
+
                               //TODO: need to redirect on success of login to different html page 
+
+                            document.getElementById('logoutBtn').style.visibility = 'visible';
+
                               }
                               else if (request.status == 401) {
 
@@ -100,3 +98,7 @@ function login(email,password) {
 
 
 }
+
+
+
+
