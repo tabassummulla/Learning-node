@@ -16,7 +16,7 @@ route.post('/', (req, res) => {
 
         if (!user) {
             
-            res.status(404).json({ error: 'User does not exist, please register' });
+            res.status(404).json({ message: 'User does not exist, please register' });
 
 
         }
@@ -25,17 +25,24 @@ route.post('/', (req, res) => {
 
                 if (valid == true) {
 
-                    res.status(200).json({message: 'Login successful' });
-            
+                    req.session.loggedin = true;
+                    req.session.username = req.body.email_add;
+                   
+                    res.status(200).json({user , message: 'Login successful'});
+
+                    User.update({last_login: Date.now()},
+                
+                    {where: {email_add: req.body.email_add}});
                 }
 
                 else {
 
-                    res.status(401).json({ error: 'Incorrect password' });
+                    res.status(401).json({ message: 'Incorrect password' });
 
                     console.log(err);
 
                 }
+                res.end();
 
             });
 
@@ -45,6 +52,7 @@ route.post('/', (req, res) => {
 
         console.log(err);
         res.status(401).json({ error: 'Failed to login' });
+        res.end();
 
     });
 
