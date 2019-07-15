@@ -16,12 +16,6 @@ User.beforeCreate(user=> {
 
 
 
-
-
-
-
-
-
 //if email exists 
 route.post('/exists', (req,res)=>{
 
@@ -74,6 +68,9 @@ route.post('/', (req, res) => {
                 }).then((user => {
       
                           res.status(200).json({message:'Account created successfuly'});
+
+                          req.session.loggedin =true;
+                          req.session.username = req.body.email_add;
       
                 })).catch((err => {
       

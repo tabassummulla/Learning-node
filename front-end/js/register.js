@@ -160,7 +160,7 @@ function emailExists(email) {
     let resp = JSON.parse(request.response);
     if (request.status === 409) {
 
-      signUpErr.innerHTML = "Email is already registered  " + "<a href='http://localhost:3000/index.html'> Login Now </a>";
+      signUpErr.innerHTML = "Email is already registered  " + "<a href='http://localhost:3000/login'> Login Now </a>";
 
     }
     else if (request.status === 200) {

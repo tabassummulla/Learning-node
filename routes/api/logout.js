@@ -1,25 +1,31 @@
 
 
 let route = require('express').Router();
+let config = require('../../config');
 
+const redirectLogin = (request, response, next) => {
 
-route.get('/', function(req,res){
-          
-	if(req.session) {
+    if (!request.session.loggedin) {
 
-                    req.session.destroy(function(err){
+        response.redirect(401, '/login');
 
-                              if(err) {
-                                        return next(err);
-                              }
-                              else{
-                                        return res.redirect('/');
-                              }
-                    });
-          }
-	
-    });
+    } else {
+        next();
+    }
+};
 
-    
+route.get('/', function (req, res) {
+
+    if (req.session.loggedin) {
+        req.session.destroy(() => {
+            console.log('hi');  
+             res.status(200).clearCookie(config.session_name);  
+        });
+    }else{
+        console.log('please login first');
+    }
+
+});
+
 
 exports = module.exports = route;

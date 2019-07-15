@@ -8,7 +8,10 @@ function logout() {
     // request.setRequestHeader("Content-Type", "application/json");
     request.onload = function () {
 
-        console.log(request.response);
+        if(request.response.status === 200){
+            
+        window.location.href='http://localhost:3000/login';
+        }
               
     };
 
