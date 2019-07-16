@@ -33,8 +33,6 @@ const User = db.define('users', {
           allowNull: false
      },
      password: {
-
-          //TODO: use bcrypt to encrypt data 
           type: Sequelize.STRING,
           allowNull: false,
 
@@ -48,6 +46,18 @@ const User = db.define('users', {
           primaryKey: true
      },
 
+    address_line1: {
+          type: Sequelize.STRING,
+          allowNull: true
+     },
+     mobile_no: {
+          type: Sequelize.STRING,
+          allowNull: true
+     },
+     profile_img:{
+          type: Sequelize.BLOB,
+          allowNull: true
+     },
      last_login: {
           type: Sequelize.DATE
      },
