@@ -38,17 +38,6 @@ function validateFields(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 function login(email,password) {
           let request = new XMLHttpRequest();
           let url = '/api/login';
@@ -60,22 +49,26 @@ function login(email,password) {
 
           };
           request.setRequestHeader("Content-Type", "application/json");
-
+       
           request.onload = function () {
 
          let resp = JSON.parse(request.response);
 
                 document.getElementById('errMsg').style.visibility="visible";
                  document.getElementById('loginErr').innerHTML = resp['message'];
-
-                    if (request.status === 200) {
-
+                      
+                      if (request.status === 200) {
+            
                         document.getElementById('errMsg').className="alert alert-success";
                         document.getElementById('loginErr').style.color = "green";
 
-                              //TODO: need to redirect on success of login to different html page 
+                        let delayInMilliseconds = 1500; //1 second
 
-                            document.getElementById('logoutBtn').style.visibility = 'visible';
+                        setTimeout(function() {
+
+                            window.location.href= '/account';
+                            
+                        }, delayInMilliseconds);
 
                               }
                               else if (request.status == 401) {
