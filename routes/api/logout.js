@@ -17,12 +17,14 @@ const redirectLogin = (request, response, next) => {
 route.get('/', function (req, res) {
 
     if (req.session.loggedin) {
-        req.session.destroy(() => {
-            console.log('hi');  
-             res.status(200).clearCookie(config.session_name);  
-        });
+        console.log('logged in reached here');
+        req.session.destroy();
+        res.clearCookie(config.session_name);  
+        res.status(200);
+
     }else{
-        console.log('please login first');
+        console.log('not logged in');
+        res.redirect(401, '/login');
     }
 
 });
