@@ -155,7 +155,14 @@ button.loginBtn:focus{
 
 #profileImg{
   width: 50%;
+  align-content: center;
 }
+
+#refresh-profile{
+  width: auto;
+  
+}
+
 
 .register{
   position: relative;
