@@ -30,14 +30,11 @@ app.use(session({
 
 
 
-app.get('/', function(request, response) {
+app.get('/account', function(request, response) {
 
 	if (request.session.loggedin) {
-		
-	
-		response.send('<h1> Welcome back , ' + request.session.username + '</h1>');
+		response.sendFile(path.join(__dirname + '/front-end/myaccount.html'));
 		response.status(200);
-
 
 	} else {
 		response.redirect(401, '/login');
