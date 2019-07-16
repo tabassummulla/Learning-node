@@ -4,16 +4,18 @@
     <head>
         <title>Home</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-
-        <script>    $(function () {
+        <script src="./js/logout.js"></script> 
+           <script>    
+           $(document).ready(function() {
                             $('#header').load("header.html");
                             $('#footer').load("footer.html");
+                  
+                        document.getElementById('logoutBtn').style.visibility = "hidden";
 
-   
                   });
-
-        </script>
+        </script> 
+      
+    
 
         <div id='header'></div>
 </head>
@@ -21,7 +23,23 @@
 <body class="text-center" cz-shortcut-listen="true">
         <div class=”main-container”>
 
-        </div>
+                <br>
+        <div class="card">
+                                        <div class="card-header">
+                                                  Featured
+                                        </div>
+                                        <div class="card-body">
+                                                  <h5 class="card-title">Special title treatment</h5>
+                                                  <p class="card-text">With supporting text below as a natural lead-in to
+                                                            additional content.</p>
+                                                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        </div>
+                              </div>
+
+
+
+
+
         <div id='footer'></div>
 </div>
 
@@ -29,3 +47,4 @@
 </body>
 
 </html>
+
