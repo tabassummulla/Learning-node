@@ -4,29 +4,6 @@ const route = require('express').Router();
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
-route.get('/', (req, res) => {
-
-    if (!req.session.loggedin) {
-        res.redirect(401, '/login');
-    }
-
-    User.findOne({
-        where: {
-            email_add: req.session.username
-        }
-    }).then((users) => {
-
-        res.status(200).json(users);
-
-    }).catch((err) => {
-        res.status(500).json({ err, message: 'Failed to get user' });
-
-
-    });
-
-});
-
-
 
 
 
