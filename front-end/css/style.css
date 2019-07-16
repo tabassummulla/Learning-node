@@ -27,8 +27,11 @@ div {
 
 }
 
+
 .main-container {
   min-height: auto;/* will cover the 100% of viewport */
+  width: 800px;
+  margin: 0 auto;
   overflow: hidden;
   display: block;
   position: relative;
@@ -115,6 +118,7 @@ background:rgb(103, 103, 214);
 color:white;
 font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 width: 22em;
+
 margin-bottom: 0px;
 margin-left: 0px;
 margin-right: 0px;
@@ -139,14 +143,22 @@ button.loginBtn:focus{
   height: auto;
   margin-inline-start: 35em;
   box-shadow: 1px 4px 8px 1px rgba(0, 0, 0, 0.1);
-  margin-top: 5em;
   padding: 12px 8px;
+  margin: 0 auto;
 }
 
+.alert.alert-warning.alert-dismissible.fade.show{
+  width: 50%;
+  align-content: center;
+  margin-inline-start: 30em;
+}
 
+#profileImg{
+  width: 50%;
+}
 
 .register{
-  position: absolute;
+  position: relative;
   background: rgba(255, 255, 255, 0.473);
   width: 40%;
   height: auto;
@@ -154,9 +166,20 @@ button.loginBtn:focus{
   margin-inline-start: 35em;
   margin-top: 5em;
  padding: 12px 8px; 
+ margin: 0 auto;
 }
 
-
+.profile{
+  position: inherit;
+  background: rgba(255, 255, 255, 0.473);
+  width: 40%;
+  height: auto;
+  box-shadow: 1px 4px 8px 1px rgba(0, 0, 0, 0.1);
+  margin-inline-start: 35em;
+  margin-top: 5em;
+ padding: 12px 8px; 
+ margin: 0 auto;
+}
 
 .div#signinHeader , .div#signUpHeader{
   color: #141414;
@@ -189,7 +212,7 @@ button.loginBtn:focus{
 
 .seperator-reg>span{display:inline-block;position:relative}.seperator-reg>span:before,.seperator-reg>span:after{background:#ccd0d5;content:" ";height:1px;position:absolute;top:50%;width:200px}.seperator-reg>span:before{margin-right:15px;right:100%}._1rf5>span:after{left:100%;margin-left:10px}.reg-sep{color:#4b4f56}
 
-#err, #loginErr, #signUpErr{
+#err, #loginErr, #signUpErr, #updateErr{
 margin-inline-start: 9px;
 align-content: center;
 color: red;
