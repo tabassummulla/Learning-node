@@ -160,7 +160,7 @@ button.loginBtn:focus{
 
 #refresh-profile{
   width: auto;
-  
+  box-shadow: none;
 }
 
 
