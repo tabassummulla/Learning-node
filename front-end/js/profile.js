@@ -23,6 +23,7 @@ function getUserProfile(){
 
               let resp = JSON.parse(request.response);
 
+              document.getElementById('errMsg').style.visibility = "hidden";
               document.getElementById('logoutBtn').style.visibility = 'visible';
               document.getElementById('welcomeMsg').innerHTML = 'Welcome Back ' + resp['first_name'];
 
@@ -87,8 +88,6 @@ else {
     let url = '/api/profile/update/address';
    
     let body = {
-    
-    email_add: email,
     address_line1 : address
     };
     request.open('POST', url);
@@ -103,8 +102,8 @@ else {
             document.getElementById('errMsg').className="alert alert-success";
             document.getElementById('updateErr').style.color = "green";
     
-            document.getElementById('address-input').disabled= true;
-            document.getElementById('updateAddress').disabled = true;
+            document.getElementById('address-input').style.visibility = 'hidden';
+            document.getElementById('updateAddress').style.visibility = 'hidden';
         
         }   
         
@@ -145,8 +144,7 @@ function updateMobile(){
        
         let body = {
         
-        mobile_no: mobile,
-        email_add : email
+        mobile_no: mobile
         };
         request.open('POST', url);
         
@@ -160,8 +158,8 @@ function updateMobile(){
                 document.getElementById('errMsg').className="alert alert-success";
                 document.getElementById('updateErr').style.color = "green";
         
-                document.getElementById('mobile-input').disabled= true;
-                document.getElementById('updateMobile').disabled = true;
+                document.getElementById('mobile-input').style.visibility = 'hidden';
+                document.getElementById('updateMobile').style.visibility = 'hidden';
             
             }   
             
