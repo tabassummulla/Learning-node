@@ -11,6 +11,8 @@ body {
 
 }
 
+
+
 div {
   display: block;
 }
@@ -155,6 +157,7 @@ button.loginBtn:focus{
 
 #profileImg{
   width: 50%;
+  margin-inline-start: 7em;
   align-content: center;
 }
 
@@ -174,6 +177,12 @@ button.loginBtn:focus{
   margin-top: 5em;
  padding: 12px 8px; 
  margin: 0 auto;
+}
+
+.input-group{
+  width: 52%;
+  align-content: center;
+  margin-inline-start: 11em;
 }
 
 .profile{

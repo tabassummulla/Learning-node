@@ -1,7 +1,15 @@
 
-    $(document).ready(function(){
+    $(window).on("load",function(){
 
         getUserProfile();
+
+
+        $('input[type="file"]').change(function(e){
+
+            var fileName = e.target.files[0].name;
+            
+            document.getElementById('filename').innerHTML = fileName;
+        });
 
     });
 
@@ -172,10 +180,45 @@ function updateMobile(){
     
     
     }
+   
+}
 
 
 
 
 
-    
+
+
+
+
+
+
+
+
+function upload(){
+
+
+    var uploadfile = $("input[name=profilePic]")[0].files[0];
+    var formData = new FormData(); 
+    formData.append("profilePic", uploadfile)
+    console.log('uploadfile', uploadfile, uploadfile.type);
+    ;
+    let request = new XMLHttpRequest();
+    let url = '/api/upload/photo';
+   
+
+    request.open('POST', url);
+
+    request.onload = function () {
+        
+        let resp = JSON.parse(request.response);
+
+            console.log(resp);
+    };
+
+    request.send(formData);
+
+
+
+
 }

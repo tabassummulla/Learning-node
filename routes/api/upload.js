@@ -1,7 +1,7 @@
 const multer = require('multer');
-const User = require('../../database/db').User;
-const route = require('express').Router();
-const bcrypt = require("bcryptjs");
+const express = require('express');
+const app = express();
+
 
 
 
@@ -9,14 +9,14 @@ const bcrypt = require("bcryptjs");
 
 let storage = multer.diskStorage({
   destination: (req, file, callback) => {
-          callback(null, __basedir + '/uploads');
+          callback(null,  '/uploads');
   },
   filename: (req, file, callback) => {
           callback(null, file.fieldname + "-" + Date.now());
   }
 });
  
-let upload = multer({storage: storage}).array('userPhoto');
+let upload = multer({storage: storage}).array('profilePic');
 
 
 app.post('/photo',function(req,res){

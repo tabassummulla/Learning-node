@@ -11,6 +11,7 @@ route.use('/logout', require('./logout'));
 
 route.use('/profile', require('./profile'));
 
+route.use('/upload', require('./upload'));
 
 exports = module.exports = {
           route
