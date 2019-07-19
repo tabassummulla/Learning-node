@@ -54,7 +54,7 @@ const User = db.define('users', {
           type: Sequelize.STRING,
           allowNull: true
      },
-     profile_img:{
+     profilePic:{
           type: Sequelize.BLOB('long'),
           allowNull: true
      },
