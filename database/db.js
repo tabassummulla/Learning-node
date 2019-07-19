@@ -55,7 +55,7 @@ const User = db.define('users', {
           allowNull: true
      },
      profilePic:{
-          type: Sequelize.BLOB('long'),
+          type: Sequelize.STRING,
           allowNull: true
      },
      last_login: {

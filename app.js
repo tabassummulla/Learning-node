@@ -43,10 +43,12 @@ app.get('/profile', function(request, response) {
 
 
 
+
 app.use(bodyParser.json());
 
 app.use('/', express.static(path.join(__dirname, './front-end')));
 app.use('/js', express.static(path.join(__dirname, './front-end/js')));
+app.use('/uploads', express.static(path.join(__dirname, './uploads')));
 
 
 

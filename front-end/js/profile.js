@@ -35,6 +35,12 @@ function getUserProfile(){
               document.getElementById('logoutBtn').style.visibility = 'visible';
               document.getElementById('welcomeMsg').innerHTML = 'Welcome Back ' + resp['first_name'];
 
+
+              if(resp['profilePic'] !== null){
+                  console.log();
+                document.getElementById('profileImg').src= './uploads/'+ resp['profilePic'];
+              }
+            
                 if(resp['address_line1'] !== null){
 
                     document.getElementById('address').innerHTML = resp['address_line1'];
@@ -209,11 +215,21 @@ function upload(){
 
     request.open('POST', url);
 
+    document.getElementById('errMsg').style.visibility = "visible";
+   
+
     request.onload = function () {
         
         let resp = JSON.parse(request.response);
 
-            console.log(JSON.stringify(resp));
+        if(request.response.status ===200){ 
+
+            document.getElementById('errMsg').className="alert alert-success";
+            document.getElementById('updateErr').style.color = "green";
+                
+        }
+            document.getElementById('updateErr').innerHTML= resp['message'];
+        
     };
 
     request.send(formData);

@@ -155,6 +155,11 @@ button.loginBtn:focus{
   margin-inline-start: 30em;
 }
 
+
+.custom-file-input#inputGroupFile04{
+  cursor: pointer; /* "hand" cursor */
+width: auto;
+}
 #profileImg{
   width: 50%;
   margin-inline-start: 7em;
