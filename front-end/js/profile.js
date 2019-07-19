@@ -213,7 +213,7 @@ function upload(){
         
         let resp = JSON.parse(request.response);
 
-            console.log(resp);
+            console.log(JSON.stringify(resp));
     };
 
     request.send(formData);
