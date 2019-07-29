@@ -54,8 +54,8 @@ const User = db.define('users', {
           type: Sequelize.STRING,
           allowNull: true
      },
-     profile_img:{
-          type: Sequelize.BLOB,
+     profilePic:{
+          type: Sequelize.STRING,
           allowNull: true
      },
      last_login: {
@@ -78,11 +78,21 @@ const User = db.define('users', {
 
 });
 
+
+
+
+
+
+
 User.prototype.validPassword = function(password) {
      return bcrypt.compareSync(password, this.password);
    };
 
 
+
+
+
+   
 
    db.sync().then(
      () => console.log("*****Database created and synced")

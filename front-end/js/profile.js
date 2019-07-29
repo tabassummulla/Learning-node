@@ -1,7 +1,15 @@
 
-    $(document).ready(function(){
+    $(window).on("load",function(){
 
         getUserProfile();
+
+
+        $('input[type="file"]').change(function(e){
+
+            var fileName = e.target.files[0].name;
+            
+            document.getElementById('filename').innerHTML = fileName;
+        });
 
     });
 
@@ -23,9 +31,16 @@ function getUserProfile(){
 
               let resp = JSON.parse(request.response);
 
+              document.getElementById('errMsg').style.visibility = "hidden";
               document.getElementById('logoutBtn').style.visibility = 'visible';
               document.getElementById('welcomeMsg').innerHTML = 'Welcome Back ' + resp['first_name'];
 
+
+              if(resp['profilePic'] !== null){
+                  console.log();
+                document.getElementById('profileImg').src= './uploads/'+ resp['profilePic'];
+              }
+            
                 if(resp['address_line1'] !== null){
 
                     document.getElementById('address').innerHTML = resp['address_line1'];
@@ -143,8 +158,7 @@ function updateMobile(){
        
         let body = {
         
-        mobile_no: mobile,
-        email_add : email
+        mobile_no: mobile
         };
         request.open('POST', url);
         
@@ -157,9 +171,10 @@ function updateMobile(){
     
                 document.getElementById('errMsg').className="alert alert-success";
                 document.getElementById('updateErr').style.color = "green";
-        
-                document.getElementById('mobile-input').style.visibility= "hidden";
-                document.getElementById('updateMobile').style.visibility= "hidden";
+    
+                document.getElementById('mobile-input').style.visibility = 'hidden';
+                document.getElementById('updateMobile').style.visibility = 'hidden';
+
             
             }   
             
@@ -172,10 +187,55 @@ function updateMobile(){
     
     
     }
+   
+}
 
 
 
 
 
-    
+
+
+
+
+
+
+
+
+function upload(){
+
+
+    var uploadfile = $("input[name=profilePic]")[0].files[0];
+    var formData = new FormData(); 
+    formData.append("profilePic", uploadfile)
+    console.log('uploadfile', uploadfile, uploadfile.type);
+    ;
+    let request = new XMLHttpRequest();
+    let url = '/api/upload/photo';
+   
+
+    request.open('POST', url);
+
+    document.getElementById('errMsg').style.visibility = "visible";
+   
+
+    request.onload = function () {
+        
+        let resp = JSON.parse(request.response);
+
+        if(request.response.status ===200){ 
+
+            document.getElementById('errMsg').className="alert alert-success";
+            document.getElementById('updateErr').style.color = "green";
+                
+        }
+            document.getElementById('updateErr').innerHTML= resp['message'];
+        
+    };
+
+    request.send(formData);
+
+
+
+
 }

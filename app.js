@@ -30,10 +30,10 @@ app.use(session({
 
 
 
-app.get('/account', function(request, response) {
+app.get('/profile', function(request, response) {
 
 	if (request.session.loggedin) {
-		response.sendFile(path.join(__dirname + '/front-end/myaccount.html'));
+		response.sendFile(path.join(__dirname + '/front-end/profile.html'));
 		response.status(200);
 
 	} else {
@@ -43,10 +43,12 @@ app.get('/account', function(request, response) {
 
 
 
+
 app.use(bodyParser.json());
 
 app.use('/', express.static(path.join(__dirname, './front-end')));
 app.use('/js', express.static(path.join(__dirname, './front-end/js')));
+app.use('/uploads', express.static(path.join(__dirname, './uploads')));
 
 
 

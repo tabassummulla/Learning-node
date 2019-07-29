@@ -66,7 +66,7 @@ function login(email,password) {
 
                         setTimeout(function() {
 
-                            window.location.href= '/account';
+                            window.location.href= '/profile';
                             
                         }, delayInMilliseconds);
 

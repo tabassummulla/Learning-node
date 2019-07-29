@@ -36,4 +36,44 @@ route.post('/delete', (req, res) => {
 
 });
 
+User.beforeUpdate((user)=>{
+    if(user.changed('password')){
+   user.password = bcrypt.hashSync(
+        user.password,
+         bcrypt.genSaltSync(10),
+         null
+       );
+    }
+});
+
+
+route.post('/changePwd', function(req,res){
+
+   if(req.session.loggedin){
+    User.update(
+        { password: req.body.password },
+        {
+        where: { email_add: req.session.username }
+        }).then((changed)=>{
+
+            res.status(200).json({message: 'Password Changed'});
+
+        }).catch((err)=>{
+
+            console.log(err);
+            res.status(500).json({message: 'Failed to change password'});
+
+        });
+    }else{
+        res.status(401);
+    }
+});
+
+
+
+
+
+
+
+
 exports = module.exports = route;
