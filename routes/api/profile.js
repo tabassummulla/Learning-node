@@ -34,7 +34,7 @@ route.post('/update/address', function(req,res){
 
           if(req.session.loggedin){
           
-          User.update({address_line1: req.body.address_line1}, { where: {email_add: req.body.email_add}}
+          User.update({address_line1: req.body.address_line1}, { where: {email_add: req.session.username}}
           
           ).then((user) =>{
 
@@ -58,7 +58,7 @@ route.post('/update/mobile', function(req,res){
           User.update(
           {mobile_no: req.body.mobile_no}, 
           
-          { where: {email_add: req.body.email_add}
+          { where: {email_add: req.session.username}
 
           }).then((user) =>{
 
